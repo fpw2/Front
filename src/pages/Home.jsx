@@ -16,7 +16,7 @@ export default function Home() {
           <h2 className="sr-only">Features</h2>
           <div className="feature-item">
             <img
-              src="./img/icon-chat.png"
+              src="/assets/img/icon-chat.png"
               alt="Chat Icon"
               className="feature-icon"
             />
@@ -28,7 +28,7 @@ export default function Home() {
           </div>
           <div className="feature-item">
             <img
-              src="./img/icon-money.png"
+              src="/assets/img/icon-money.png"
               alt="Chat Icon"
               className="feature-icon"
             />
@@ -39,7 +39,7 @@ export default function Home() {
           </div>
           <div className="feature-item">
             <img
-              src="./img/icon-security.png"
+              src="/assets/img/icon-security.png"
               alt="Chat Icon"
               className="feature-icon"
             />
