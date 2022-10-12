@@ -7,16 +7,6 @@ export default function Navbar() {
 const dispatch = useDispatch()
 const lightheme = useSelector(state => state)
 
-fetch("", {
-    method: "POST"
-})
-.then(response => response.json())
-.then(data => {
-    console.log(data);
-});
-
-
-
   return (
     <nav className="main-nav">
       <Link to="/" className="main-nav-logo">
@@ -30,7 +20,7 @@ fetch("", {
       <div>
         {/* j'appelle mon action avec dispatch() */}
         <Button className="theme-switcher" onClick={() => dispatch(toggle())}>{lightheme ? "dark" : "light"}</Button>
-        <Link to="/sign-in" className="main-nav-item">
+        <Link to="/login" className="main-nav-item">
           <i className="fa fa-user-circle"></i>
           Sign In
         </Link>

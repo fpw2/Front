@@ -1,18 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+// State //
+const initialState = true
+
 const themeSlice = createSlice({
   name: "theme",
-  // State //
-  initialState: true,
+  initialState,
   reducers: {
-    toggle: (state) => { // l'action toggle ('theme/toggle')
+    toggle: (state) => { // l'action toggle ("theme/toggle")
         if(state) {
           document.body.classList.add("dark")
         }
         if(!state) {
           document.body.classList.remove("dark")
         }
-        return state === true ? false : true
+        return state === true ? false : true // return true or false
     }
   }
 })
@@ -21,9 +23,9 @@ const themeSlice = createSlice({
 const themeReducer = themeSlice.reducer
 
 // Actions //
-const { toggle } = themeSlice.actions
+const {toggle} = themeSlice.actions
 
-//
+// export //
 export { themeReducer, toggle }
 
 
