@@ -4,7 +4,7 @@ import axios from "axios"
 
 // createAsyncThunk génère les 3 types d'action de cyle de vie pending, fulfilled et rejected
 export const userLogin = createAsyncThunk(
-    "user/login",
+    "/login",
     async ({
         email,
         password

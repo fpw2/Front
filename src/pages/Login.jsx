@@ -1,13 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import LoginForm from "../components/login/LoginForm";
 
 export default function Login() {
-  const navigate = useNavigate();
   // register = {...register} , handleSubmit on form
 
-  const token = localStorage.getItem("token");
 
   // useEffect(() => {
   //   if(token) {

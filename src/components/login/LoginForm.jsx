@@ -1,11 +1,28 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { userLogin } from "../../feature/auth/authService";
+// import Loader from "../components/ui-kit/Loader"
 
 export default function LoginForm() {
+  const navigate = useNavigate()
+  // register = {...register} , handleSubmit on form
   const { register, handleSubmit } = useForm();
-  const submitLogin = (data) => {
-    console.log(data);
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.userInfo)
+
+  // Appel au backend
+  const submitLogin = ({username, password}) => {
+    dispatch(userLogin(username, password))
+    console.log(username, password);
   };
+
+  useEffect(() => {
+    if(user) {
+      navigate("/profile")
+    }
+  }, [])
 
   return (
     <>
