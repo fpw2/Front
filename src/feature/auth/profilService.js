@@ -2,27 +2,18 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
 // createAsyncThunk génère les 3 types d'action de cyle de vie pending, fulfilled et rejected
-export const userLogin = createAsyncThunk(
-    "/login",
-    async ({ username, password }, { rejectWithValue }) => {
+export const userProfile = createAsyncThunk(
+    "/profile",
+    async (arg, { getState, rejectWithValue }) => {
         try {
-            // configure header's Content-Type as JSON
+            // get user data from store
+            const { user } = getState()
             const config = {
                 headers: {
-                    "Content-Type": "application/json",
+                    Authorization: `Bearer${user.userToken}`,
                 },
             }
-            const {
-                data
-            } = await axios.post(
-                "http://localhost:3001/api/v1/user/login", {
-                    email: username,
-                    password: password
-                },
-                config
-            )
-            // store user's token in local storage
-            localStorage.setItem("userToken", data.body.token)
+            const { data } = await axios.post("http://localhost:3001/api/v1/user/profile",{}, config)
             return data
         } catch (error) {
             // return custom error message from API 

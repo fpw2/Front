@@ -1,5 +1,6 @@
 @import "./base.css";
 @import "./button.css";
+@import "./error.css";
 
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -80,6 +81,27 @@ body {
 .main-nav-logo-image {
   max-width: 100%;
   width: 200px;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+}
+
+.header-name {
+  font-weight: bold;
+  padding-right: 40px;
+  padding-left: 10px;
+}
+
+.fa-user, .fa-bracket {
+  padding-right: 10px;
+}
+
+.fa-user {
+  background-color: rgb(206, 206, 206);
+  border-radius: 50%;
+  padding: 10px;
 }
 
 .hero {
