@@ -1,17 +1,10 @@
-import { useSelector } from "react-redux";
+import EditProfile from "./EditProfile";
 
 export default function ProfilDetails() {
-  const { userInfo } = useSelector((state) => state.user)
 
   return (
     <>
-      <div className="header">
-        <h1>
-          <p>Welcome back</p>
-          <p>{userInfo.firstName} {userInfo.lastName} !</p>
-        </h1>
-        <button className="edit-button">Edit Name</button>
-      </div>
+      <EditProfile />
       <h2 className="sr-only">Accounts</h2>
       <section className="account">
         <div className="account-content-wrapper">

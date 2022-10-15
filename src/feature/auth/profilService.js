@@ -10,10 +10,37 @@ export const userProfile = createAsyncThunk(
             const { user } = getState()
             const config = {
                 headers: {
-                    Authorization: `Bearer${user.userToken}`,
+                    Authorization: `Bearer ${user.userToken}`,
                 },
             }
             const { data } = await axios.post("http://localhost:3001/api/v1/user/profile",{}, config)
+            return data
+        } catch (error) {
+            // return custom error message from API 
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+
+export const userEditProfile = createAsyncThunk(
+    "/profile",
+    async (arg, { firstName, lastName, getState, rejectWithValue }) => {
+        try {
+            // get user data from store
+            const { user } = getState()
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${user.userToken}`,
+                },
+            }
+            const { data } = await axios.put("http://localhost:3001/api/v1/user/profile",{
+                firstName: firstName,
+                lastName: lastName
+            }, config)
             return data
         } catch (error) {
             // return custom error message from API 

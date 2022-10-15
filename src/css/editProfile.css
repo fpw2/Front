@@ -1,0 +1,14 @@
+.input-champs > input, .btn-save-cancel > button {
+    margin: 10px;
+}
+
+.input-champs > input {
+    padding: 10px;
+    border-radius: 4px;
+    border-color: rgb(206,206,206,0.5);
+}
+
+.input-champs > input::placeholder {
+    color: rgb(163, 160, 160);
+    font-weight: bold;
+}

@@ -8,6 +8,8 @@ const userToken = localStorage.getItem("userToken") ? localStorage.getItem("user
 // State //
 const initialState = {
     loading: false,
+    editing: false,
+    update: {},
     userInfo: {},
     userToken, // for storing the token what backend return
     error: null,
@@ -25,6 +27,16 @@ const userSlice = createSlice({
             state.userInfo = {}
             state.userToken = null
             state.error = null
+        },
+        edit: (state) => {
+            state.editing = true
+        },
+        save: (state, {payload}) => {
+            state.update= payload
+            state.editing = false
+        },
+        cancel: (state) => {
+            state.editing = false
         }
     },
     extraReducers: { // used to manage different state (pending, fullfilled, rejected)
@@ -61,7 +73,7 @@ const userSlice = createSlice({
 })
 
 // Actions // 
-export const { logout } = userSlice.actions
+export const { logout, edit, save, cancel } = userSlice.actions
 
 // Reducer //
 export const userReducer = userSlice.reducer
