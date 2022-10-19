@@ -3,7 +3,7 @@ import axios from "axios"
 
 // createAsyncThunk génère les 3 types d'action de cyle de vie pending, fulfilled et rejected
 export const userProfile = createAsyncThunk(
-    "/profile",
+    "user/profile",
     async (arg, { getState, rejectWithValue }) => {
         try {
             // get user data from store
@@ -27,10 +27,9 @@ export const userProfile = createAsyncThunk(
 )
 
 export const userEditProfile = createAsyncThunk(
-    "/profile",
-    async (arg, { firstName, lastName, getState, rejectWithValue }) => {
+    "user/profile/edit",
+    async ({ firstName, lastName }, { getState, rejectWithValue }) => {
         try {
-            // get user data from store
             const { user } = getState()
             const config = {
                 headers: {
@@ -41,9 +40,9 @@ export const userEditProfile = createAsyncThunk(
                 firstName: firstName,
                 lastName: lastName
             }, config)
+
             return data
         } catch (error) {
-            // return custom error message from API 
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
             } else {
@@ -52,3 +51,4 @@ export const userEditProfile = createAsyncThunk(
         }
     }
 )
+

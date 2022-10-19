@@ -1,14 +1,22 @@
-.input-champs > input, .btn-save-cancel > button {
-    margin: 10px;
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
-.input-champs > input {
-    padding: 10px;
-    border-radius: 4px;
-    border-color: rgb(206,206,206,0.5);
+.wrapper input {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  border-color: rgb(206, 206, 206, 0.5);
+  gap: 100px 100px;
 }
 
-.input-champs > input::placeholder {
-    color: rgb(163, 160, 160);
-    font-weight: bold;
+.wrapper > input::placeholder {
+  color: rgb(163, 160, 160);
+  font-weight: bold;
+}
+
+.wrapper button {
+  margin: 10px;
+  width: 100px;
 }

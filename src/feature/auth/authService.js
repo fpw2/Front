@@ -3,7 +3,7 @@ import axios from "axios"
 
 // createAsyncThunk génère les 3 types d'action de cyle de vie pending, fulfilled et rejected
 export const userLogin = createAsyncThunk(
-    "/login",
+    "user/login",
     async ({ username, password }, { rejectWithValue }) => {
         try {
             // configure header's Content-Type as JSON
@@ -12,10 +12,7 @@ export const userLogin = createAsyncThunk(
                     "Content-Type": "application/json",
                 },
             }
-            const {
-                data
-            } = await axios.post(
-                "http://localhost:3001/api/v1/user/login", {
+            const {data} = await axios.post("http://localhost:3001/api/v1/user/login", {
                     email: username,
                     password: password
                 },
@@ -34,3 +31,6 @@ export const userLogin = createAsyncThunk(
         }
     }
 )
+
+
+

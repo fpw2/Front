@@ -4,6 +4,8 @@ import Home from '../pages/Home';
 import Login from "../pages/Login";
 import Profil from "../pages/Profil";
 import Footer from "../layout/Footer";
+import ProtectedRoute from "../routing/ProtectedRoute";
+import Error from "./error/Error";
 
 export default function App() {
 
@@ -14,7 +16,10 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route path="/login" element={<Login />}></Route>
-              <Route path="/profile" element={<Profil />}></Route>
+              <Route element={<ProtectedRoute />}>
+                <Route path="/profile" element={<Profil />}></Route>
+              </Route>
+              <Route path="*" element={<Error />}></Route>
             </Routes>
         <Footer />
       </div>
