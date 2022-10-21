@@ -67,7 +67,7 @@ export default function LoginForm() {
           <input type="password" id="password" {...register("password")} required />
         </div>
         <div className="input-remember">
-          <input onChange={handleRememberClick} type="checkbox" id="remember-me" defaultChecked={userRemember ? userRemember : false} />
+          <input onChange={handleRememberClick} type="checkbox" id="remember-me" defaultChecked={userNameStorage} disabled={!userName} />
           <label htmlFor="remember-me">Remember me</label>
         </div>
         <Button type="submit" className="w100">Sign In</Button>      
