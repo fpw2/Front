@@ -40,6 +40,7 @@ const userSlice = createSlice({
             state.userRemember = !state.userRemember
             if(state.userRemember){
                 localStorage.setItem("username", payload)
+                state.userRemember = false
             }else{
                 localStorage.removeItem("username")
             }

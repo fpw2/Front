@@ -14,26 +14,36 @@ export default function LoginForm() {
   const dispatch = useDispatch()
   const [userName, setUserName] = useState("")
   console.log("val", userName)
-  
+  console.log("Storage", userNameStorage)
+
   // state.user => user: userReducer in my store in authService.js
   // I destructure the state for 
   const { userToken, error } = useSelector(state => state.user)
   const { userRemember } = useSelector((state) => state.user)
   
-  // Call the userLogin() action with dispatch
+  /**
+   * Call the userLogin action 
+   * @param {object} username lastname
+   */ 
   const submitLogin = (data) => {
-    console.log(data.username)
     dispatch(userLogin(data))
   };
   
   useEffect(() => {
-    if(userNameStorage) {
-      // dispatch(remember(userName))
-    }
     if(userToken) {
       navigate("/profile")
     }
-  }, [navigate, userToken, userNameStorage, dispatch, userName])
+    // if(userNameStorage) {
+    //     dispatch(remember(userNameStorage))
+    //   }
+    }, [navigate, userToken, userNameStorage, dispatch])
+    
+  /**
+   * Call the remember action
+   */
+  function handleRememberClick() {
+      dispatch(remember(userName))
+  }
 
 
   /**
@@ -57,7 +67,7 @@ export default function LoginForm() {
           <input type="password" id="password" {...register("password")} required />
         </div>
         <div className="input-remember">
-          <input onChange={() => dispatch(remember(userName))} type="checkbox" id="remember-me" defaultChecked={userRemember ? userRemember : false} />
+          <input onChange={handleRememberClick} type="checkbox" id="remember-me" defaultChecked={userRemember ? userRemember : false} />
           <label htmlFor="remember-me">Remember me</label>
         </div>
         <Button type="submit" className="w100">Sign In</Button>      
